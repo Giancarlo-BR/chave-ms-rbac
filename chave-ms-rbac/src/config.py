@@ -6,8 +6,11 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
-    jwt_secret: str = "change-me"
-    jwt_algorithm: str = "HS256"
+    db_host: str = "localhost"
+    db_port: int = 5432
+    db_name: str = "chave_rbac"
+    db_user: str = "rbac"
+    db_password: str = "rbac_secret"
     port: int = 8000
 
 
