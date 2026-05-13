@@ -3,12 +3,13 @@
 Microsserviço de **Autorização (RBAC)** do projeto **Chave**.
 
 Mantém o mapeamento `UserID → Roles` em banco Postgres dedicado
-(`AuthorizationDB`) e expõe operações REST consumidas pelo **API Gateway**:
-`Register-User`, `Get-Roles`, atribuir e revogar roles.
+(`AuthorizationDB`) e expõe operações REST consumidas pelo serviço de
+**Autenticação** (chave-mahakali-authenticator): `Register-User`, `Get-Roles`,
+atribuir e revogar roles.
 
-> Não decodifica JWT, não autentica nada. A emissão/decodificação de
-> tokens é responsabilidade do API Gateway, que orquestra o fluxo de
-> login chamando este serviço para popular o claim `roles` do JWT.
+> Não decodifica JWT, não autentica nada. A emissão dos tokens é
+> responsabilidade do Authenticator, que durante o login e o refresh chama
+> este serviço para popular o claim `roles` do JWT.
 
 ---
 
